@@ -77,7 +77,7 @@ void record_wav(uint32_t rec_time)
 
     // Write the header to the WAV file
     //fwrite(&wav_header, sizeof(wav_header), 1, f);
-    udp_data_send(&wav_header, sizeof(wav_header));
+    udp_data_send((char *)&wav_header, sizeof(wav_header));
 
     return;
 
@@ -87,7 +87,7 @@ void record_wav(uint32_t rec_time)
         if (i2s_channel_read(rx_handle, (char *)i2s_readraw_buff, SAMPLE_SIZE, &bytes_read, 1000) == ESP_OK) {
             printf("[0] %d [1] %d [2] %d [3]%d ...\n", i2s_readraw_buff[0], i2s_readraw_buff[1], i2s_readraw_buff[2], i2s_readraw_buff[3]);
             // Write the samples to the WAV file
-            fwrite(i2s_readraw_buff, bytes_read, 1, f);
+            // fwrite(i2s_readraw_buff, bytes_read, 1, f);
             flash_wr_size += bytes_read;
         } else {
             printf("Read Failed!\n");
@@ -95,14 +95,14 @@ void record_wav(uint32_t rec_time)
     }
 
     ESP_LOGI(TAG, "Recording done!");
-    fclose(f);
+    // fclose(f);
     ESP_LOGI(TAG, "File written on SDCard");
 
     // All done, unmount partition and disable SPI peripheral
-    esp_vfs_fat_sdcard_unmount(SD_MOUNT_POINT, card);
-    ESP_LOGI(TAG, "Card unmounted");
+    // esp_vfs_fat_sdcard_unmount(SD_MOUNT_POINT, card);
+    // ESP_LOGI(TAG, "Card unmounted");
     // Deinitialize the bus after all devices are removed
-    spi_bus_free(host.slot);
+    // spi_bus_free(host.slot);
 }
 
 void setup_microphone(void)

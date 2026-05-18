@@ -44,14 +44,14 @@ const int UDP_DATA_RDY = BIT0;
 static EventGroupHandle_t send_data_event_group;
 
 struct data_control_t {
-    static size_t data_count;
-    static char *data_ptr;
+    size_t data_count;
+    char *data_ptr;
     bool done;
 };
 
-struct data_control_t data_control;
+static struct data_control_t data_control;
 
-void udp_data_send(const char * bufs, size_t count){
+void udp_data_send(char * bufs, size_t count){
 
     /* ToDo: add mutex */
     if (bufs != NULL) {

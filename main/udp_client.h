@@ -10,6 +10,6 @@
 #define __UDP_CLIENT_H__
 
 void setup_udp_client(void);
-void udp_data_send(const char * bufs, size_t count);
+void udp_data_send(char * bufs, size_t count);
 
 #endif //__UDP_CLIENT_H__
