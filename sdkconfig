@@ -708,10 +708,8 @@ CONFIG_PARTITION_TABLE_MD5=y
 #
 # WiFi Configuration
 #
-# default:
-CONFIG_ESP_WIFI_SSID="myssid"
-# default:
-CONFIG_ESP_WIFI_PASSWORD="mypassword"
+CONFIG_ESP_WIFI_SSID="XLAN_2.4G"
+CONFIG_ESP_WIFI_PASSWORD="n!R4w9A7K7Y"
 # default:
 # CONFIG_ESP_STATION_EXAMPLE_WPA3_SAE_PWE_HUNT_AND_PECK is not set
 # default:
@@ -747,8 +745,7 @@ CONFIG_ESP_WIFI_AUTH_WPA2_PSK=y
 CONFIG_EXAMPLE_IPV4=y
 # default:
 # CONFIG_EXAMPLE_IPV6 is not set
-# default:
-CONFIG_EXAMPLE_IPV4_ADDR="192.168.0.165"
+CONFIG_EXAMPLE_IPV4_ADDR="192.168.0.132"
 # default:
 CONFIG_EXAMPLE_PORT=3333
 # default:
@@ -758,38 +755,23 @@ CONFIG_EXAMPLE_SOCKET_IP_INPUT_STRING=y
 # end of UDP Server Configuration
 
 #
-# Example Configuration
+# I2S Configuration
 #
-
-#
-# SDCard Configuration
-#
-# default:
-CONFIG_EXAMPLE_SPI_MISO_GPIO=15
-# default:
-CONFIG_EXAMPLE_SPI_MOSI_GPIO=14
-# default:
-CONFIG_EXAMPLE_SPI_SCLK_GPIO=18
-# default:
-CONFIG_EXAMPLE_SPI_CS_GPIO=19
-# end of SDCard Configuration
 
 #
 # I2S MEMS MIC Configuration
 #
-# default:
-CONFIG_EXAMPLE_SAMPLE_RATE=44100
-# default:
-CONFIG_EXAMPLE_BIT_SAMPLE=16
-# default:
-CONFIG_EXAMPLE_I2S_DATA_GPIO=5
+CONFIG_EXAMPLE_SAMPLE_RATE=16000
+CONFIG_EXAMPLE_BIT_SAMPLE=32
+CONFIG_EXAMPLE_I2S_DATA_GPIO=15
 # default:
 CONFIG_EXAMPLE_I2S_CLK_GPIO=4
+# default:
+CONFIG_EXAMPLE_I2S_WS_GPIO=2
 # end of I2S MEMS MIC Configuration
 
-# default:
-CONFIG_EXAMPLE_REC_TIME=15
-# end of Example Configuration
+CONFIG_EXAMPLE_REC_TIME=30
+# end of I2S Configuration
 
 #
 # Compiler options
