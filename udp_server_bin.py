@@ -1,4 +1,6 @@
 import socket
+import numpy as np
+from pydub import AudioSegment
 
 # Configuration
 UDP_IP = "0.0.0.0" # Listen on localhost (change to "0.0.0.0" to listen on all interfaces)
@@ -31,7 +33,7 @@ def start_udp_server():
                     # Optional: Break if an empty packet is received (often used as an EOF signal)
                     print("Received empty packet. Stopping.")
                     break
-                
+
                 # 4. Write the binary chunk directly to the file
                 f.write(data)
                 print(f"Received {len(data)} bytes from {addr} ({blocks})")
@@ -40,6 +42,16 @@ def start_udp_server():
                 
         except KeyboardInterrupt:
             print("\nServer stopped manually by user.")
+
+            # Load audio
+            audio = AudioSegment.from_wav(OUTPUT_FILENAME)
+
+            # Aply gain (mics send 24-bits but samples are 32-bits): multiply by 256 (8 bit shift)
+            audio_gain = audio + 48 
+
+            # Exporta o resultado
+            audio_gain.export(OUTPUT_FILENAME+'gain.wav', format="wav")
+
         finally:
             sock.close()
             print("Socket closed.")

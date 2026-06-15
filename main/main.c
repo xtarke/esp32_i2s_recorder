@@ -106,7 +106,7 @@ void setup_microphone(void)
         },
     };
 
-    std_cfg.slot_cfg.slot_bit_width = I2S_SLOT_BIT_WIDTH_32BIT;
+    std_cfg.slot_cfg.slot_bit_width = I2S_DATA_BIT_WIDTH_32BIT;
     std_cfg.slot_cfg.slot_mask      = I2S_STD_SLOT_BOTH;
 
     ESP_ERROR_CHECK(i2s_channel_init_std_mode(rx_handle, &std_cfg));
